@@ -1,0 +1,66 @@
+﻿<Window x:Class="FindDetails.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FindDetails"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Title="DetailFinder">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="File"/>
+            <MenuItem Header="Папка со списком номенклатуры" Click="FolderDetail_OnClick" />
+            <MenuItem Header="Файл PDF" Click="FolderPdf_OnClick" />
+            <MenuItem Header="Свободный поиск" Click="FreeSearching_OnClick"/> 
+            <MenuItem Header="Print" Click="Print_OnClick"/>
+            <MenuItem Header="Настройки" Click="Settings_OnClick"/>
+            <MenuItem Header="Help" Click="Help_OnClick"/>
+
+
+        </Menu>
+        <DataGrid Name="DataGridOrder"  Grid.Row="1" Background="AntiqueWhite" IsReadOnly="True" AutoGenerateColumns="False">
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsShow}" Value="1">
+                            <Setter Property="Background" Value="#E5FCF3">
+                            </Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding IsShow}" Value="0">
+                            <Setter Property="Background" Value="#edeef0">
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Show" Width="50" Height="20" ToolTip="Работа с еденицей номенклатуры"  Tag="1" Click="ShowDialog_OnClick" >
+                               
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="№:" FontSize="15"  Width="100"  Binding="{Binding Id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Деталь:" FontSize="15"  Width="100"  Binding="{Binding Number}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Просмотр:" FontSize="15"  Width="100"  Binding="{Binding IsShow}" IsReadOnly="True"/> 
+                <DataGridTextColumn Header="Веридикт:" FontSize="15"  Width="100"  Binding="{Binding Verdict}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Описание:" FontSize="15"  MaxWidth="1000"   Binding="{Binding Description}" IsReadOnly="True"/>
+              
+               
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

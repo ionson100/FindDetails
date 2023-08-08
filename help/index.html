@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Help</title>
+    <link rel="stylesheet" href="helpstyle.css">
+    <meta charset="utf-8">
+</head>
+<body>
+<div class="sidenav">
+    <a href="#top1">Назначение программы</a>
+
+
+    <a href="#top2">Подготовка программы</a>
+
+    <a href="#top3">Поиск по таблице</a>
+
+    <a href="#top4">Свободный поиск</a>
+
+    <a href="#top5">Настройки программы</a>
+
+
+
+</div>
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+<div class="panel">
+
+    <p><a name="top1"></a></p>
+    <b>Назначение программы<br/></b>
+    Программа предназначена для потска деталей в каталогах<br/>
+    сборочных спецификаций в файлах Pdf<br/>
+
+    <br/>
+    <p><a name="top2"></a></p>
+    <b>Подготовка программы.<br/></b>
+    <br/>
+
+     1. Указать на директорию где возможно должен лежать<br/>
+       текстовый файл с номерами сборочных единиц (номер детали)<br/>
+     Если такого файла нет, просто укажите на любую директорию и положите туда пустой текстовый файл.<br/>
+     Если вы всеже решили использовать список номеров деталей.<br/>
+    Просто вставьте каджый номер детали в текстовый файл.<br/>
+    Одна строка - один номер.<br/>
+    И перезагрузите программу, при старте программы программа прочитает этот файл<br/>
+    и сформирует таблицу, на основе этого файла.<br/>
+    <br/>
+    2. Укажите файл PDF в котором будем искать номера деталей.<br/>
+    Если файлов много, объедините все файлы для поиска в один файл.<br/>
+    <br/>
+    <p><a name="top3"></a></p>
+    <b>Поиск по таблице.<br/></b>
+    </br>
+
+    <br/>
+    Диалог поиска,<br/>
+    Чек - что эта деталь просмотренна<br/>
+    Чек - вердикт по этой детали ( покупаем или нет)<br/>
+    Описание детали<<br/>
+    <img class="image" src="images/1.png" /></br>
+    </br>
+    <p><a name="top4"></a></p>
+    <b>Свободный поиск<br/></b>
+    Осуществляется поиск по коду, который вводим вручную<br/>
+    <br/>
+    <img class="image" src="images/2.png" /></br>
+
+    <p><a name="top5"></a></p>
+    <b>Настройки программы<br/></b>
+    <br/>
+    <img class="image" src="images/3.png" /></br>
+    </br>
+    IsAddNullFromNumber - добавлять лидирующие нули, если номер меньше LengthNumber, по умолчанию true.</br>
+    LengthNumber - размер номера детали в каталоге, по умолчанию 8.</br>
+    PathDetails - Папка с текстовым файлом или фалов со списком деталей.</br>
+    PathPdfFile - Путь к файлу PDF, в котором будет осуществляться поиск.</br>
+    PathAdobeExecute - Путь к исполняемому файлу Adobe Acrobat.</br></br></br>
+
+
+
+</div>
+
+
+</div>
+</body>
+</html>
